@@ -1,0 +1,37 @@
+{% extends 'admin/change_list.html' %}
+
+
+{% block object-tools %}
+<form id="fontsize-form" style="display: flex;justify-content:center;align-items: center; flex-direction: column"
+      action="get_images/"
+      method="POST">
+    {% csrf_token %}
+    <button style=
+                    "padding: 10px 20px; background-color: #79AEC8;
+                    color: aliceblue; border: none;
+                    width: 613px;
+                    cursor: pointer;"
+            type="submit"
+    >
+        Download Images
+    </button>
+    <label for=""></label>
+    <textarea
+            style="border: 5px solid aliceblue; border-radius: 0;
+             margin-bottom: 20px; width: 600px; height: 100px; resize: none"
+            name="image_urls" id="" cols="30" rows="10">
+
+    </textarea>
+    <input name="fontsize" type="text" class="">
+</form>
+<script>
+    let fontSize = document.querySelector('#fontsize-form')
+    fontSize.querySelector('input[name="fontSize"]').addEventListener('change', function (e) {
+        let fontSize = e.target.value
+        fontSizeForm.action = 'fontSize/' + fontSize + '/'
+    })
+</script>
+
+{{block.super}}
+
+{% endblock %}

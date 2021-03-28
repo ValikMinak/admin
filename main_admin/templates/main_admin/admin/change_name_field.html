@@ -1,0 +1,20 @@
+{% extends 'admin/change_list.html' %}
+
+
+{% block object-tools %}
+
+<form id="change_name-form">
+    <input name="change_name" type="text" class="">
+    <button type="submit">
+        Change
+    </button>
+</form>
+<script>
+    let changeNameForm = document.querySelector('#change_name-form')
+    changeNameForm.querySelector('input[name="change_name"]').addEventListener('change', function (e) {
+        let newName = e.target.value
+        changeNameForm.action = 'products/' + newName + '/'
+    })
+</script>
+{{block.super}}
+{% endblock %}
